@@ -1,5 +1,14 @@
 .gradle/
 build/
+classes_gen
+source_gen
+source_gen.caches
+
+**/.mps/workspace.xml
+**/.mps/shelf
+**/startup.properties
+
+/lib
 
 ### STS ###
 .apt_generated

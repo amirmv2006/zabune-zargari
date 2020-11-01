@@ -270,7 +270,7 @@
       <node concept="3981dG" id="3PswS$xW29D" role="39821P">
         <node concept="3_J27D" id="3PswS$xW29E" role="Nbhlr">
           <node concept="3Mxwew" id="3PswS$xW29H" role="3MwsjC">
-            <property role="3MwjfP" value="zargari.zip" />
+            <property role="3MwjfP" value="ir.amv.laas.samples.zargari.lang.zip" />
           </node>
         </node>
         <node concept="m$_wl" id="3PswS$xWsqQ" role="39821P">
