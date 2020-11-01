@@ -1,0 +1,4 @@
+rootProject.name = 'zargari'
+
+include 'code:buildscripts'
+include 'code:zargari'
