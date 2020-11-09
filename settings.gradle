@@ -1,4 +1,4 @@
-rootProject.name = 'zargari'
+rootProject.name = 'ZabuneZargari'
 
 include 'code:buildscripts'
 include 'code:zargari'
