@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="ir.amv.laas.samples.zargari.build" uuid="d0bdb74c-3e2c-483c-81a3-28e62296b486" moduleVersion="0" compileInMPS="true">
+<solution name="ir.amv.laas.samples.zargari.build" uuid="3203ae04-bd13-4c4b-9b5d-ad0b2b67a8cf" moduleVersion="0" compileInMPS="true">
   <models>
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
@@ -21,8 +21,7 @@
     <language slang="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" version="2" />
   </languageVersions>
   <dependencyVersions>
-    <module reference="d0bdb74c-3e2c-483c-81a3-28e62296b486(ir.amv.laas.samples.zargari.build)" version="0" />
+    <module reference="3203ae04-bd13-4c4b-9b5d-ad0b2b67a8cf(ir.amv.laas.samples.zargari.build)" version="0" />
     <module reference="422c2909-59d6-41a9-b318-40e6256b250f(jetbrains.mps.ide.build)" version="0" />
   </dependencyVersions>
 </solution>
-
