@@ -18,7 +18,7 @@ pipeline {
                                 'ORG_GRADLE_PROJECT_repoUser=jenkins'
                         ]) {
                             script {
-                                sh "gradle buildPlugin --no-daemon"
+                                sh "gradle buildPlugin publish --no-daemon"
                                 archiveArtifacts "build/**/*.zip, build/**/*.jar"
                             } // script
                         }
