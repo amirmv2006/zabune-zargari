@@ -33,3 +33,6 @@ source_gen.caches
 
 ### VS Code ###
 .vscode/
+
+# my ignores!
+.mps/vcs.xml
