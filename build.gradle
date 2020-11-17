@@ -57,7 +57,7 @@ ext["itemis.mps.gradle.ant.defaultScriptArgs"] = ["-Dbasedir=."]
 publishing {
     publications {
         maven(MavenPublication) {
-            artifact("build/artifacts/zargari_Plugin/ir.amv.laas.samples.zargari.lang.zip") {
+            artifact("build/artifacts/zargari_Plugin/ir.amv.laas.samples.zargari.zip") {
                 extension 'zip'
             }
         }
