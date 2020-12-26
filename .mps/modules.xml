@@ -2,9 +2,9 @@
 <project version="4">
     <component name="MPSProject">
         <projectModules>
-            <modulePath
-                    path="$PROJECT_DIR$/code/buildscripts/solutions/ir.amv.laas.samples.zargari.build/ir.amv.laas.samples.zargari.build.msd"
-                    folder="buildscripts"/>
+            <modulePath path="$PROJECT_DIR$/buildscripts/ir.amv.laas.samples.zargari.build.msd" folder="buildscripts"/>
+            <modulePath path="$PROJECT_DIR$/code/zargari/buildsolution/ir.amv.laas.samples.zargari.lang.build.msd"
+                        folder="langs"/>
             <modulePath
                     path="$PROJECT_DIR$/code/zargari/languages/ir.amv.laas.samples.zargari.lang/ir.amv.laas.samples.zargari.lang.mpl"
                     folder="langs"/>

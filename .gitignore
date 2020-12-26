@@ -1,5 +1,6 @@
 .gradle/
 build/
+build.xml
 /lib
 gradle.properties
 **/startup.properties

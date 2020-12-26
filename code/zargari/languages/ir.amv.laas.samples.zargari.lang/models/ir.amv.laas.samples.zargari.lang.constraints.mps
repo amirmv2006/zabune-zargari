@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:6e183a1d-a2a9-49a9-8c3f-d421deb63289(ir.amv.laas.samples.zargari.lang.constraints)">
+<model ref="r:f1cb5a96-1bb1-42fb-b189-e81ed2f2c156(ir.amv.laas.samples.zargari.lang.constraints)">
     <persistence version="9"/>
     <languages>
         <use id="5dae8159-ab99-46bb-a40d-0cee30ee7018" name="jetbrains.mps.lang.constraints.rules.kinds" version="0"/>

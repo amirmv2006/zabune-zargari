@@ -27,7 +27,9 @@
 
     <target name="assemble" depends="declare-mps-tasks">
         <mkdir dir="${build.layout}"/>
-        <echo file="${build.layout}/build.properties">mps.build.number=${mps.build.number}${line.separator}mps.date=${mps.date}${line.separator}mps.build.vcs.number=${mps.build.vcs.number}${line.separator}mps.teamcity.buildConfName=${mps.teamcity.buildConfName}${line.separator}mps.idea.platform.build.number=${mps.idea.platform.build.number}${line.separator}mps.mps.build.counter=${mps.mps.build.counter}${line.separator}mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
+        <echo file="${build.layout}/build.properties">
+            mps.build.number=${mps.build.number}${line.separator}mps.date=${mps.date}${line.separator}mps.build.vcs.number=${mps.build.vcs.number}${line.separator}mps.teamcity.buildConfName=${mps.teamcity.buildConfName}${line.separator}mps.idea.platform.build.number=${mps.idea.platform.build.number}${line.separator}mps.mps.build.counter=${mps.mps.build.counter}${line.separator}mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}
+        </echo>
     </target>
 
     <target name="buildDependents"/>
@@ -43,7 +45,9 @@
 
     <target name="generate" depends="declare-mps-tasks, fetchDependencies">
         <echo message="generating"/>
-        <generate strictMode="true" parallelMode="true" parallelThreads="8" useInplaceTransform="false"                   hideWarnings="false" createStaticRefs="true" fork="true" skipUnmodifiedModels="${mps.generator.skipUnmodifiedModels}">
+        <generate strictMode="true" parallelMode="true" parallelThreads="8" useInplaceTransform="false"
+                  hideWarnings="false" createStaticRefs="true" fork="true"
+                  skipUnmodifiedModels="${mps.generator.skipUnmodifiedModels}">
             <plugin path="${artifacts.mps}/plugins/mps-build"/>
             <plugin path="${artifacts.mps}/plugins/mps-core"/>
             <library file="${artifacts.mps}/languages/baseLanguage/closures.runtime.jar"/>
@@ -76,7 +80,8 @@
             <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.dataFlow.jar"/>
             <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.editor.jar"/>
             <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.findUsages.jar"/>
-            <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.generator.generationContext.jar"/>
+            <library
+                    file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.generator.generationContext.jar"/>
             <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.generator.jar"/>
             <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.intentions.jar"/>
             <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.migration.jar"/>
@@ -132,7 +137,8 @@
             <library file="${artifacts.mps}/plugins/mps-build/languages/build/jetbrains.mps.build.workflow.preset.jar"/>
             <library file="${artifacts.mps}/plugins/mps-build/languages/build/jetbrains.mps.ide.build.jar"/>
             <chunk>
-                <module file="${basedir}/code/buildscripts/solutions/ir.amv.laas.samples.zargari.build/ir.amv.laas.samples.zargari.build.msd"/>
+                <module file="${basedir}/buildscripts/ir.amv.laas.samples.zargari.build.msd"/>
+                <module file="${basedir}/code/zargari/buildsolution/ir.amv.laas.samples.zargari.lang.build.msd"/>
             </chunk>
             <jvmargs>
                 <arg value="-ea"/>
@@ -148,20 +154,35 @@
 
     <target name="makeDependents"/>
 
-    <target name="java.compile.ir.amv.laas.samples.zargari.build">
-        <mkdir dir="${basedir}/code/buildscripts/solutions/ir.amv.laas.samples.zargari.build/source_gen"/>
-        <mkdir dir="${build.tmp}/java/out/ir.amv.laas.samples.zargari.build"/>
-        <javac destdir="${build.tmp}/java/out/ir.amv.laas.samples.zargari.build" fork="true" encoding="utf8"
+    <target name="java.compile.ir.amv.laas.samples.zargari.lang.build">
+        <mkdir dir="${basedir}/code/zargari/buildsolution/source_gen"/>
+        <mkdir dir="${build.tmp}/java/out/ir.amv.laas.samples.zargari.lang.build"/>
+        <javac destdir="${build.tmp}/java/out/ir.amv.laas.samples.zargari.lang.build" fork="true" encoding="utf8"
                includeantruntime="false" debug="true">
             <compilerarg value="-Xlint:none"/>
             <src>
-                <path location="${basedir}/code/buildscripts/solutions/ir.amv.laas.samples.zargari.build/source_gen"/>
+                <path location="${basedir}/code/zargari/buildsolution/source_gen"/>
             </src>
             <classpath/>
         </javac>
     </target>
 
+    <target name="java.compile.ir.amv.laas.samples.zargari.build"
+            depends="java.compile.ir.amv.laas.samples.zargari.lang.build">
+        <mkdir dir="${basedir}/buildscripts/source_gen"/>
+        <mkdir dir="${build.tmp}/java/out/ir.amv.laas.samples.zargari.build"/>
+        <javac destdir="${build.tmp}/java/out/ir.amv.laas.samples.zargari.build" fork="true" encoding="utf8"
+               includeantruntime="false" debug="true">
+            <compilerarg value="-Xlint:none"/>
+            <src>
+                <path location="${basedir}/buildscripts/source_gen"/>
+            </src>
+            <classpath path="${build.tmp}/java/out/ir.amv.laas.samples.zargari.lang.build"/>
+        </javac>
+    </target>
+
     <target name="cleanSources">
-        <delete dir="${basedir}/code/buildscripts/solutions/ir.amv.laas.samples.zargari.build/source_gen"/>
+        <delete dir="${basedir}/buildscripts/source_gen"/>
+        <delete dir="${basedir}/code/zargari/buildsolution/source_gen"/>
     </target>
 </project>
