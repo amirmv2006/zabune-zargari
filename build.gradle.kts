@@ -130,7 +130,7 @@ publishing {
                 if (version.toString().endsWith("-SNAPSHOT"))
                     project.properties["repoSnapshotUrl"]!!
                 else
-                    project.properties["repoSnapshotUrl"]!!
+                    project.properties["repoReleaseUrl"]!!
             )
             credentials {
                 username = project.properties["repoUser"] as String
