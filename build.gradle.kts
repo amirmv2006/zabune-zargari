@@ -3,6 +3,7 @@ import org.gradle.api.tasks.Copy
 plugins {
     base
     id("de.undercouch.download") version "4.1.1"
+    id("de.marcphilipp.nexus-publish") version "0.3.0"
 }
 
 group = "ir.amv.laas.samples"
@@ -115,4 +116,24 @@ val copyJbr = tasks.register("copyJbr") {
 val buildRcpDistribJbr by tasks.registering {
     dependsOn(buildRcpDistrib, copyJbr)
     antexec("build/build-rcpdistrib-jbr.xml")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("zargari") {
+            artifact("code/zargari/build/artifacts/zargari_Plugin/zargari.zip") {
+            }
+        }
+    }
+}
+
+nexusPublishing {
+    repositories {
+        create("myNexus") {
+            nexusUrl.set(uri(project.properties["repoUrl"]!!))
+            snapshotRepositoryUrl.set(uri("http://localhost:8081/repository/maven-snapshots/"))
+            username.set(project.properties["repoUser"] as String) // defaults to project.properties["myNexusUsername"]
+            password.set(project.properties["repoPassword"] as String) // defaults to project.properties["myNexusPassword"]
+        }
+    }
 }
