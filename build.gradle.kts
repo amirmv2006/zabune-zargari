@@ -1,9 +1,7 @@
-import org.gradle.api.tasks.Copy
-
 plugins {
     base
     id("de.undercouch.download") version "4.1.1"
-    id("de.marcphilipp.nexus-publish") version "0.3.0"
+    id("maven-publish")
 }
 
 group = "ir.amv.laas.samples"
@@ -122,18 +120,22 @@ publishing {
     publications {
         create<MavenPublication>("zargari") {
             artifact("code/zargari/build/artifacts/zargari_Plugin/zargari.zip") {
+                extension = "zip"
             }
         }
     }
-}
-
-nexusPublishing {
     repositories {
-        create("myNexus") {
-            nexusUrl.set(uri(project.properties["repoUrl"]!!))
-            snapshotRepositoryUrl.set(uri("${project.properties["repoUrl"]!!}/repository/maven-snapshots/"))
-            username.set(project.properties["repoUser"] as String) // defaults to project.properties["myNexusUsername"]
-            password.set(project.properties["repoPassword"] as String) // defaults to project.properties["myNexusPassword"]
+        maven {
+            url = uri(
+                if (version.toString().endsWith("-SNAPSHOT"))
+                    project.properties["repoSnapshotUrl"]!!
+                else
+                    project.properties["repoSnapshotUrl"]!!
+            )
+            credentials {
+                username = project.properties["repoUser"] as String
+                password = project.properties["repoPassword"] as String
+            }
         }
     }
 }
