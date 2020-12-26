@@ -131,7 +131,7 @@ nexusPublishing {
     repositories {
         create("myNexus") {
             nexusUrl.set(uri(project.properties["repoUrl"]!!))
-            snapshotRepositoryUrl.set(uri("http://localhost:8081/repository/maven-snapshots/"))
+            snapshotRepositoryUrl.set(uri("${project.properties["repoUrl"]!!}/repository/maven-snapshots/"))
             username.set(project.properties["repoUser"] as String) // defaults to project.properties["myNexusUsername"]
             password.set(project.properties["repoPassword"] as String) // defaults to project.properties["myNexusPassword"]
         }
