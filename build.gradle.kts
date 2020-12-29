@@ -1,7 +1,6 @@
 plugins {
     base
     id("de.undercouch.download") version "4.1.1"
-    id("maven-publish")
 }
 
 group = "ir.amv.laas.samples"
@@ -114,28 +113,4 @@ val copyJbr = tasks.register("copyJbr") {
 val buildRcpDistribJbr by tasks.registering {
     dependsOn(buildRcpDistrib, copyJbr)
     antexec("build/build-rcpdistrib-jbr.xml")
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("zargari") {
-            artifact("code/zargari/build/artifacts/zargari_Plugin/zargari.zip") {
-                extension = "zip"
-            }
-        }
-    }
-    repositories {
-        maven {
-            url = uri(
-                if (version.toString().endsWith("-SNAPSHOT"))
-                    project.properties["repoSnapshotUrl"]!!
-                else
-                    project.properties["repoReleaseUrl"]!!
-            )
-            credentials {
-                username = project.properties["repoUser"] as String
-                password = project.properties["repoPassword"] as String
-            }
-        }
-    }
 }
